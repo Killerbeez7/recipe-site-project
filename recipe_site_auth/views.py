@@ -2,6 +2,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
+from recipe_site.recipe_site_auth.forms import SignInForm
+
 
 def sign_up(request):
     if request.POST:
@@ -20,9 +22,23 @@ def sign_up(request):
 
 
 def sign_in(request):
-    user = authenticate(username="plamen5", password="qwe")
-    login(request, user)
-    return redirect('index')
+    if request.method == 'POST':
+        form = SignInForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+    else:
+        form = SignInForm()
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'auth/sign-in.html', context)
+
+    # user = authenticate(username="plamen5", password="qwe")
+    # login(request, user)
+    # return redirect('index')
 
 
 def sign_out(request):
