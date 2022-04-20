@@ -1,16 +1,30 @@
 from django.shortcuts import render, redirect
-from .forms import RecipeCreateForm
+from .forms import RecipeForm
 from .models import Recipe
 
 
-def create_recipe(request):
+def list_recipes(request):
+    recipes = Recipe.objects.all()
+    for recipe in recipes:
+        recipe.selected_image = recipe.recipeimage_set.filter(is_selected=True)\
+            .first()
+
+    context = {
+        'recipes': recipes,
+        'form': RecipeForm(),
+    }
+
+    return render(request, 'recipes/list_recipes.html', context)
+
+
+def add_recipe(request):
     if request.method == 'GET':
-        form = RecipeCreateForm()
-        return render(request, 'recipes/create_recipe.html', {'form': form})
+        form = RecipeForm()
+        return render(request, 'recipes/add_recipe.html', {'form': form})
     else:
-        form = RecipeCreateForm(request.POST, request.FILES)
+        form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('list recipes')
 
-        return render(request, 'recipes/create_recipe.html', {'form': form})
+        return render(request, 'recipes/add_recipe.html', {'form': form})

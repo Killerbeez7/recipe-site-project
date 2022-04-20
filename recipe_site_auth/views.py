@@ -2,17 +2,17 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
-from recipe_site.recipe_site_auth.forms import SignInForm
+from recipe_site.recipe_site_auth.forms import SignInForm, SignUpForm
 
 
 def sign_up(request):
     if request.POST:
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('sign in')
     else:
-        form = UserCreationForm()
+        form = SignUpForm()
 
     context = {
         'form': form,

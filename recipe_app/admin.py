@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from recipe_site.recipe_app.models import Recipe, RecipeImage
+
+
+@admin.register(Recipe)
+class RecipeAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(RecipeImage)
+class RecipeImageAdmin(admin.ModelAdmin):
+    pass
