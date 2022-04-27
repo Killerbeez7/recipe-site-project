@@ -6,5 +6,10 @@ def index(request):
     return render(request, 'index.html')
 
 
-def create_account(request):
-    pass
+def about(request):
+    return render(request, 'common/about.html')
+
+
+def contacts(request):
+    return render(request, 'common/contacts.html')
+

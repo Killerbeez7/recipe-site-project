@@ -1,5 +1,4 @@
 from django import forms
-
 from recipe_site.profiles.models import Profile
 
 

@@ -5,3 +5,7 @@ import recipe_site.profiles.signals
 urlpatterns = (
     path('', profile_details, name='profile details'),
 )
+
+
+
+

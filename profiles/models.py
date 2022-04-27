@@ -21,7 +21,6 @@ class Profile(models.Model):
         upload_to='profiles',
         blank=True,
     )
-
     user = models.OneToOneField(
         UserModel,
         on_delete=models.CASCADE,

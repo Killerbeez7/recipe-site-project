@@ -1,5 +1,4 @@
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
 
 from recipe_site.recipe_site_auth.forms import SignInForm, SignUpForm
@@ -35,10 +34,6 @@ def sign_in(request):
     }
 
     return render(request, 'auth/sign-in.html', context)
-
-    # user = authenticate(username="plamen5", password="qwe")
-    # login(request, user)
-    # return redirect('index')
 
 
 def sign_out(request):
