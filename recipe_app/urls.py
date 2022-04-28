@@ -4,4 +4,5 @@ from recipe_site.recipe_app import views
 urlpatterns = (
     path('', views.list_recipes, name='list recipes'),
     path('add/', views.add_recipe, name='add recipe'),
+    path('recipe-details/', views.recipe_details, name='recipe details')
 )

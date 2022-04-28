@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import RecipeForm
 from .models import Recipe
+from django.views import generic
 
 
 def list_recipes(request):
@@ -28,3 +29,7 @@ def add_recipe(request):
             return redirect('list recipes')
 
         return render(request, 'recipes/add_recipe.html', {'form': form})
+
+
+def recipe_details(request):
+    return render(request, 'recipes/recipe_details.html')
