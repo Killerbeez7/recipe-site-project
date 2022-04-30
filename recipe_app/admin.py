@@ -7,7 +7,3 @@ from recipe_site.recipe_app.models import Recipe
 class RecipeAdmin(admin.ModelAdmin):
     pass
 
-
-# @admin.register(RecipeImage)
-# class RecipeImageAdmin(admin.ModelAdmin):
-#     pass

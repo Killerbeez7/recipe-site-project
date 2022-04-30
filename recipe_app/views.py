@@ -1,4 +1,4 @@
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 from .models import Recipe
 from django.views.generic import ListView, CreateView, DetailView
@@ -21,12 +21,14 @@ class RecipeAddView(AnyGroupRequiredMixin, CreateView):
     fields = '__all__'
     template_name = 'recipes/add_recipe.html'
     success_url = reverse_lazy('list recipes')
+    # def get_success_url(self):
+    #     return reverse('recipe details', kwargs={
+    #         'pk': self.object.id,
+    #     })
 
 
 class RecipeDetailsView(DetailView):
-    model = ''
-    template_name = 'recipes/recipe_details.html'
-
+    model = Recipe
 
 # def list_recipes(request):
 #     recipes = Recipe.objects.all()

@@ -3,7 +3,6 @@ from django import forms
 
 
 class RecipeForm(forms.ModelForm):
-    # image = forms.ImageField()
     def save(self, commit=True):
         recipe = super().save(commit=commit)
 

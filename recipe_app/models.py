@@ -16,11 +16,3 @@ class Recipe(models.Model):
         return self.name
 
 
-# class RecipeImage(models.Model):
-#     image = models.ImageField(
-#         upload_to='recipes',
-#     )
-#     is_selected = models.BooleanField(
-#         default=False,
-#     )
-#     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
